@@ -62,9 +62,10 @@ jobs:
         -Dpackaging=jar
 
     - name: Run Badua coverage
-      run: |
-        cd core/spring
-        mvn -B verify -P badua-coverage -Dcheckstyle.skip=true -Drat.skip=true
+      run: mvn verify -pl common,core,core/spring -am -Dcheckstyle.skip=true -Drat.skip=true -P badua-coverage
+      #|
+        #cd core/spring
+        #mvn -B verify -P badua-coverage -Dcheckstyle.skip=true -Drat.skip=true
 
     - name: Upload Badua XML report
       uses: actions/upload-artifact@v3
