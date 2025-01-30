@@ -33,7 +33,7 @@ jobs:
           ${{ runner.os }}-maven-
 
     - name: Maven build 
-      run: mvn verify -pl common,core,core/spring -am -Dcheckstyle.skip=true -Drat.skip=true 
+      run: mvn install -pl common,core,core/spring -am -Dcheckstyle.skip=true -Drat.skip=true 
 
     - name: Switch to JDK 17
       uses: actions/setup-java@v3
