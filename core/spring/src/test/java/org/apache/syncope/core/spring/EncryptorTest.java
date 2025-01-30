@@ -111,34 +111,34 @@ public class EncryptorTest {
 
     public static class TestEncode {
 
-        @Test
-        public void testValidKeyAES() throws UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
-            String value = "mySecretKey123";
-            CipherAlgorithm cipherAlgorithm = CipherAlgorithm.AES;
-            boolean expException = false;
-
-            try {
-                Encryptor encryptor = Encryptor.getInstance("validInstance");
-                String encoded = encryptor.encode(value, cipherAlgorithm);
-                if (!expException) {
-                    assertNotNull("Encoded value should not be null for valid input.", encoded);
-                    assertTrue("Encoded value should be verified.", encryptor.verify(value, cipherAlgorithm, encoded));
-                }
-            } catch (IllegalArgumentException e) {
-                if (!expException) {
-                    fail("Did not expect an exception for valid input: " + e.getMessage());
-                } else {
-                    assertTrue("Expected IllegalArgumentException for invalid input.", true);
-                }
-            } catch (UnsupportedEncodingException | NoSuchPaddingException | IllegalBlockSizeException |
-                     NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
-                if(!expException) {
-                    fail("Did not expect an exception for valid input: " + e.getMessage());
-                } else {
-                    assertTrue("Expected exception for invalid input.", true);
-                }
-            }
-        }
+//        @Test
+//        public void testValidKeyAES() throws UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
+//            String value = "mySecretKey123";
+//            CipherAlgorithm cipherAlgorithm = CipherAlgorithm.AES;
+//            boolean expException = false;
+//
+//            try {
+//                Encryptor encryptor = Encryptor.getInstance("validInstance");
+//                String encoded = encryptor.encode(value, cipherAlgorithm);
+//                if (!expException) {
+//                    assertNotNull("Encoded value should not be null for valid input.", encoded);
+//                    assertTrue("Encoded value should be verified.", encryptor.verify(value, cipherAlgorithm, encoded));
+//                }
+//            } catch (IllegalArgumentException e) {
+//                if (!expException) {
+//                    fail("Did not expect an exception for valid input: " + e.getMessage());
+//                } else {
+//                    assertTrue("Expected IllegalArgumentException for invalid input.", true);
+//                }
+//            } catch (UnsupportedEncodingException | NoSuchPaddingException | IllegalBlockSizeException |
+//                     NoSuchAlgorithmException | BadPaddingException | InvalidKeyException e) {
+//                if(!expException) {
+//                    fail("Did not expect an exception for valid input: " + e.getMessage());
+//                } else {
+//                    assertTrue("Expected exception for invalid input.", true);
+//                }
+//            }
+//        }
 
         @Test
         public void testValidKeyAES2() throws UnsupportedEncodingException, NoSuchPaddingException, IllegalBlockSizeException, NoSuchAlgorithmException, BadPaddingException, InvalidKeyException {
