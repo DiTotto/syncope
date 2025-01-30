@@ -68,7 +68,7 @@ jobs:
         #mvn -B verify -P badua-coverage -Dcheckstyle.skip=true -Drat.skip=true
 
     - name: Upload Badua XML report
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: badua-report
         path: core/spring/target/badua.xml
