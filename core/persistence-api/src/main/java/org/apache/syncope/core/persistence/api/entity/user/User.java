@@ -55,6 +55,8 @@ public interface User extends Account, GroupableRelatable<User, UMembership, UPl
 
     String getSecurityAnswer();
 
+    String getClearSecurityAnswer();
+
     void setSecurityAnswer(String securityAnswer);
 
     Integer getFailedLogins();
