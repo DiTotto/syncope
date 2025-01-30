@@ -35,6 +35,12 @@ jobs:
     - name: Maven build 
       run: mvn verify -pl common,core,core/spring -am -Dcheckstyle.skip=true -Drat.skip=true 
 
+    - name: Switch to JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
     - name: Install Badua Agent Jar
       run: |
         mvn install:install-file \
