@@ -406,12 +406,14 @@ under the License.
     <connid.ad.version>1.3.8</connid.ad.version>
     <connid.googleapps.version>1.4.3</connid.googleapps.version>
     <connid.azure.version>2.0.0</connid.azure.version>
-    <connid.scim.version>1.0.0-SNAPSHOT</connid.scim.version>
+<!--    <connid.scim.version>1.0.0-SNAPSHOT</connid.scim.version>-->
+    <connid.scim.version>1.0.0</connid.scim.version>
     <connid.servicenow.version>1.0.2</connid.servicenow.version>
     <connid.okta.version>3.0.0</connid.okta.version>
     <connid.cmd.version>0.5</connid.cmd.version>
 
-    <cxf.version>4.0.1-SNAPSHOT</cxf.version>
+<!--    <cxf.version>4.0.1-SNAPSHOT</cxf.version>-->
+    <cxf.version>4.0.1</cxf.version>
     <bouncycastle.version>1.72</bouncycastle.version>
     <nimbus-jose-jwt.version>9.31</nimbus-jose-jwt.version>
 
@@ -435,7 +437,8 @@ under the License.
     <commons-jexl.version>3.3</commons-jexl.version>
     <commons-text.version>1.10.0</commons-text.version>
 
-    <pac4j.version>6.0.0-RC6-SNAPSHOT</pac4j.version>
+<!--    <pac4j.version>6.0.0-RC6-SNAPSHOT</pac4j.version>-->
+    <pac4j.version>6.1.0</pac4j.version>
 
     <cas.version>7.0.0-RC5</cas.version>
     <cas-client.version>4.0.1</cas-client.version>
@@ -456,11 +459,17 @@ under the License.
     <jsplumb.version>2.0.7</jsplumb.version>
     <chartjs.version>1.0.2</chartjs.version>
 
-    <wicket.version>10.0.0-M1-SNAPSHOT</wicket.version>
-    <wicketstuff.version>10.0.0-SNAPSHOT</wicketstuff.version>
-    <wicket-jqueryui.version>10.0.0-SNAPSHOT</wicket-jqueryui.version>
-    <wicket-bootstrap.version>7.0.0-SNAPSHOT</wicket-bootstrap.version>
-    <wicket-spring-boot.version>4.0.0-SNAPSHOT</wicket-spring-boot.version>
+<!--    <wicket.version>10.0.0-M1-SNAPSHOT</wicket.version>-->
+<!--    <wicketstuff.version>10.0.0-SNAPSHOT</wicketstuff.version>-->
+<!--    <wicket-jqueryui.version>10.0.0-SNAPSHOT</wicket-jqueryui.version>-->
+<!--    <wicket-bootstrap.version>7.0.0-SNAPSHOT</wicket-bootstrap.version>-->
+<!--    <wicket-spring-boot.version>4.0.0-SNAPSHOT</wicket-spring-boot.version>-->
+
+    <wicket.version>9.9.0</wicket.version>
+    <wicketstuff.version>9.8.0</wicketstuff.version>
+    <wicket-jqueryui.version>9.8.0</wicket-jqueryui.version>
+    <wicket-bootstrap.version>5.0.6</wicket-bootstrap.version>
+    <wicket-spring-boot.version>3.1.6</wicket-spring-boot.version>
 
     <antlr4.version>4.12.0</antlr4.version>
 
@@ -956,12 +965,16 @@ under the License.
         <version>2.0.0</version>
         <exclusions>
           <exclusion>
-            <groupId>com.sun.mail</groupId>
-            <artifactId>jakarta.mail</artifactId>
+<!--            <groupId>com.sun.mail</groupId>-->
+<!--            <artifactId>jakarta.mail</artifactId>-->
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
           </exclusion>
           <exclusion>
-            <groupId>jakarta.activation</groupId>
-            <artifactId>jakarta.activation-api</artifactId>
+<!--            <groupId>jakarta.activation</groupId>-->
+<!--            <artifactId>jakarta.activation-api</artifactId>-->
+            <groupId>com.sun.activation</groupId>
+            <artifactId>jakarta.activation</artifactId>
           </exclusion>
         </exclusions>
       </dependency>
@@ -1329,6 +1342,25 @@ under the License.
         <enabled>true</enabled>
       </snapshots>
     </repository>
+    <!-- AGGIUNTA -->
+    <repository>
+      <id>central</id>
+      <url>https://repo.maven.apache.org/maven2</url>
+      <releases>
+        <enabled>true</enabled>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>sonatype-snapshots</id>
+      <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+      <snapshots>
+        <enabled>true</enabled>
+      </snapshots>
+    </repository>
+    <!-- AGGIUNTA -->
   </repositories>
 
   <pluginRepositories>
@@ -1672,7 +1704,7 @@ under the License.
         <plugin>
           <groupId>io.fabric8</groupId>
           <artifactId>docker-maven-plugin</artifactId>
-          <version>0.42.1</version>
+          <version>0.42.0</version>
         </plugin>
 
         <plugin>
@@ -1721,7 +1753,7 @@ under the License.
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-enforcer-plugin</artifactId>
-        <version>3.3.0</version>
+        <version>3.2.1</version>
         <executions>
           <execution>
             <id>default-cli</id>
@@ -2019,7 +2051,8 @@ under the License.
             <link>http://fasterxml.github.io/jackson-dataformat-xml/javadoc/2.14/</link>
             <link>http://fasterxml.github.io/jackson-dataformats-text/javadoc/yaml/2.14/</link>
             <link>http://fasterxml.github.io/jackson-dataformats-text/javadoc/csv/2.14/</link>
-            <link>https://ci.apache.org/projects/wicket/apidocs/10.x/</link>
+<!--            <link>https://ci.apache.org/projects/wicket/apidocs/10.x/</link>-->
+            <link>https://ci.apache.org/projects/wicket/apidocs/9.x/</link>
             <link>https://commons.apache.org/proper/commons-lang/javadocs/api-release/</link>
             <link>https://commons.apache.org/proper/commons-jexl/apidocs/</link>
             <link>https://tika.apache.org/2.7.0/api/</link>
@@ -2139,11 +2172,12 @@ under the License.
               <dependency>
                 <groupId>org.asciidoctor</groupId>
                 <artifactId>asciidoctorj-pdf</artifactId>
-                <version>2.3.6</version>
+                <version>2.3.4</version>
               </dependency>
             </dependencies>
             <configuration>
               <doctype>book</doctype>
+              <sourceHighlighter>highlightjs</sourceHighlighter>
               <attributes>
                 <docVersion>${project.version}</docVersion>
                 <snapshotOrRelease>${snapshotOrRelease}</snapshotOrRelease>
