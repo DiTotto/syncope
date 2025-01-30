@@ -1,0 +1,44 @@
+name: Pit coverage Workflow
+
+on:
+  push:
+    branches:
+      - master
+
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+
+    - name: Setup JDK 21
+      uses: actions/setup-java@v3
+      with:
+        java-version: '21'
+        distribution: 'temurin'
+
+    - name: Set MAVEN_OPTS
+      run: echo "MAVEN_OPTS=-Xms1G -Xmx2G" >> $GITHUB_ENV
+
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+    - name: Maven build 
+      run: mvn install -pl common,core,core/spring -am -Dcheckstyle.skip=true -Drat.skip=true 
+
+    - name: Run Pit coverage
+      run: mvn verify -pl common,core,core/spring -am -Dcheckstyle.skip=true -Drat.skip=true -P mutation-coverage
+
+    - name: Upload Jacoco report
+      uses: actions/upload-artifact@v4
+      with:
+        name: jacoco-report
+        path: core/spring/target/pit-reports/**
