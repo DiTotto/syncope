@@ -343,11 +343,11 @@ under the License.
               <verbose>true</verbose>
               <targetClasses>
                 <param>org.apache.syncope.core.spring.security.Encryptor</param>
-                <param>org.apache.syncope.core.spring.policy.DefaultPasswordRule</param>
+                <param>org.apache.syncope.core.spring.policy.DefaultAccountRule</param>
               </targetClasses>
               <targetTests>
                 <param>org.apache.syncope.core.spring.EncryptorTest</param>
-                <param>org.apache.syncope.core.spring.DefaultPasswordRuleTest</param>
+                <param>org.apache.syncope.core.spring.DefaultAccountRuleTest</param>
               </targetTests>
             </configuration>
             <executions>

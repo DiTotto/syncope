@@ -48,10 +48,15 @@ public class DefaultAccountRuleTest {
             invalidConf2.getWordsNotPermitted().add("word2");
             invalidConf2.setName("word2");
 
+            DefaultAccountRuleConf invalidConf3 = new DefaultAccountRuleConf();
+            invalidConf1.setMinLength(1);
+            invalidConf1.setMaxLength(Integer.MAX_VALUE);
+
             return Arrays.asList(new Object[][]{
                     {validConf, false},
                     {invalidConf1, false}, //true
                     {invalidConf2, false}, //true
+                    {invalidConf3, false}, //true
                     {null, true}
             });
         }
@@ -88,27 +93,80 @@ public class DefaultAccountRuleTest {
         public static Collection<Object[]> data(){
 
             DefaultAccountRuleConf validConf = new DefaultAccountRuleConf();
-            validConf.getWordsNotPermitted().add("fascio");
+            validConf.getWordsNotPermitted().add("admin");
+
 
             DefaultUser validUser = new DefaultUser();
             validUser.setUsername("validUser");
 
 
             User invalidUser1 = new DefaultUser();
-            invalidUser1.setUsername("fascio");
+            invalidUser1.setUsername("admin");
 
             User invalidUser2 = new DefaultUser();
-            invalidUser2.setUsername("fascio is a bad word");
+            invalidUser2.setUsername("admin is a bad word");
 
             User invalidUser3 = new DefaultUser();
             invalidUser2.setUsername("");
+
+            //added for jacoco
+            DefaultAccountRuleConf confWithMinLength = new DefaultAccountRuleConf();
+            confWithMinLength.setMinLength(5);
+            User invalidUser4 = new DefaultUser();
+            invalidUser4.setUsername("abcd");
+
+            DefaultAccountRuleConf confWithMaxLength = new DefaultAccountRuleConf();
+            confWithMaxLength.setMaxLength(5);
+            User invalidUser5 = new DefaultUser();
+            invalidUser5.setUsername("abcdefg");
+
+            DefaultAccountRuleConf confWithPattern = new DefaultAccountRuleConf();
+            confWithPattern.setPattern("^[a-zA-Z0-9]*$");
+            User invalidUser6 = new DefaultUser();
+            invalidUser6.setUsername("admin");
+
+            //added for badua
+            DefaultAccountRuleConf confUpperCase = new DefaultAccountRuleConf();
+            confUpperCase.setAllUpperCase(true);
+            User validUser2 = new DefaultUser();
+            validUser2.setUsername("VALIDUSER");
+
+            DefaultAccountRuleConf confLowerCase = new DefaultAccountRuleConf();
+            confLowerCase.setAllLowerCase(true);
+            User invalidUser7 = new DefaultUser();
+            invalidUser7.setUsername("Invaliduser");
+
+            //added for pit
+//            DefaultAccountRuleConf confWithMinLength2 = new DefaultAccountRuleConf();
+//            confWithMinLength2.setMinLength(5);
+//            User invalidUser8 = new DefaultUser();
+//            invalidUser8.setUsername("abcde");
+//
+//            DefaultAccountRuleConf confWithMinLength3 = new DefaultAccountRuleConf();
+//            confWithMinLength3.setMinLength(0);
+//            User invalidUser9 = new DefaultUser();
+//            invalidUser9.setUsername("a");
+//
+//            DefaultAccountRuleConf confWithMaxLength2 = new DefaultAccountRuleConf();
+//            confWithMaxLength2.setMaxLength(5);
+//            User invalidUser10 = new DefaultUser();
+//            invalidUser10.setUsername("abcde");
+
 
             return Arrays.asList(new Object[][]{
                 {validUser, validConf, false},
                 {invalidUser1, validConf, true},
                 {invalidUser2, validConf, true},
                 {invalidUser3, validConf, true},
-                {null, validConf, true}
+                {null, validConf, true},
+                {invalidUser4, confWithMinLength, true},
+                {invalidUser5, confWithMaxLength, true},
+                {invalidUser6, confWithPattern, false},
+                {validUser2, confUpperCase, false},
+                {invalidUser7, confLowerCase, true},
+//                {invalidUser8, confWithMinLength2, false},
+//                {invalidUser9, confWithMinLength3, false},
+//                {invalidUser10, confWithMaxLength2, false}
             });
         }
 
@@ -144,17 +202,17 @@ public class DefaultAccountRuleTest {
         public static Collection<Object[]> data(){
 
             DefaultAccountRuleConf validConf = new DefaultAccountRuleConf();
-            validConf.getWordsNotPermitted().add("fascio");
+            validConf.getWordsNotPermitted().add("culo");
 
             DefaultLinkedAccount validAccount = new DefaultLinkedAccount();
             validAccount.setUsername("validUser");
 
 
             DefaultLinkedAccount invalidAccount1 = new DefaultLinkedAccount();
-            invalidAccount1.setUsername("fascio");
+            invalidAccount1.setUsername("culo");
 
             DefaultLinkedAccount invalidAccount2 = new DefaultLinkedAccount();
-            invalidAccount2.setUsername("fascio is a bad word");
+            invalidAccount2.setUsername("culo is a bad word");
 
 
             return Arrays.asList(new Object[][]{
