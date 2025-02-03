@@ -137,20 +137,20 @@ public class DefaultAccountRuleTest {
             invalidUser7.setUsername("Invaliduser");
 
             //added for pit
-//            DefaultAccountRuleConf confWithMinLength2 = new DefaultAccountRuleConf();
-//            confWithMinLength2.setMinLength(5);
-//            User invalidUser8 = new DefaultUser();
-//            invalidUser8.setUsername("abcde");
-//
-//            DefaultAccountRuleConf confWithMinLength3 = new DefaultAccountRuleConf();
-//            confWithMinLength3.setMinLength(0);
-//            User invalidUser9 = new DefaultUser();
-//            invalidUser9.setUsername("a");
-//
-//            DefaultAccountRuleConf confWithMaxLength2 = new DefaultAccountRuleConf();
-//            confWithMaxLength2.setMaxLength(5);
-//            User invalidUser10 = new DefaultUser();
-//            invalidUser10.setUsername("abcde");
+            DefaultAccountRuleConf confWithMinLength2 = new DefaultAccountRuleConf();
+            confWithMinLength2.setMinLength(5);
+            User invalidUser8 = new DefaultUser();
+            invalidUser8.setUsername("abcde");
+
+            DefaultAccountRuleConf confWithMinLength3 = new DefaultAccountRuleConf();
+            confWithMinLength3.setMinLength(0);
+            User invalidUser9 = new DefaultUser();
+            invalidUser9.setUsername("a");
+
+            DefaultAccountRuleConf confWithMaxLength2 = new DefaultAccountRuleConf();
+            confWithMaxLength2.setMaxLength(5);
+            User invalidUser10 = new DefaultUser();
+            invalidUser10.setUsername("abcde");
 
 
             return Arrays.asList(new Object[][]{
@@ -164,9 +164,9 @@ public class DefaultAccountRuleTest {
                 {invalidUser6, confWithPattern, false},
                 {validUser2, confUpperCase, false},
                 {invalidUser7, confLowerCase, true},
-//                {invalidUser8, confWithMinLength2, false},
-//                {invalidUser9, confWithMinLength3, false},
-//                {invalidUser10, confWithMaxLength2, false}
+                {invalidUser8, confWithMinLength2, false},
+                {invalidUser9, confWithMinLength3, false},
+                {invalidUser10, confWithMaxLength2, false}
             });
         }
 
